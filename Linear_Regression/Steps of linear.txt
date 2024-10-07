@@ -1,0 +1,23 @@
+# Independent features and dependent features:
+# train test split:
+
+# standardizing the dataset:
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+import LinearRegression:
+regression = LinearRegression()
+regression.fit(X_train, y_train)
+
+# Prediction:
+y_pred = regression.Predict(X_test)
+
+# Cross validation:
+from sklearn.model_selection import cross_val_score
+mse=cross_val_score(regression,X_train,y_train,scoring='neg_mean_squared_error',cv=10)
+np.mean(mse)
+
+import seaborn as sns
+sns.displot(y_pred-y_test,kind='kde')
+
